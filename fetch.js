@@ -30,3 +30,5 @@ function oFetch(object){
         }
     }
 }
+
+module.exports = oFetch;
