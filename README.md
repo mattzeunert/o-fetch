@@ -10,11 +10,11 @@ Install oFetch using NPM: `npm install o-fetch --save`
 
 ## More examples
 
-var oFetch = require("o-fetch");
+    var oFetch = require("o-fetch");
 
-// using ES2015 destructuring syntax
-var [firstName, lastName] = oFetch(person, "firstName", "lastName");
+    // using ES2015 destructuring syntax
+    var [firstName, lastName] = oFetch(person, "firstName", "lastName");
 
-// Fetch a nested value
-var countryCode = oFetch(person, "address.country.countryCode"); 
+    // Fetch a nested value
+    var countryCode = oFetch(person, "address.country.countryCode"); 
 
