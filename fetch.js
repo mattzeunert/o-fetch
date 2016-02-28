@@ -10,25 +10,51 @@ function oFetch(object){
         });
     }
 
-    function getValue(object, key){
+    function showError(message){
+        console.log("ERR: " + message)
+        throw message;
+    }
+
+    function getValue(object, key, alreadyEvaluatedKeys){
+        console.log("getValue", object, key, "aek", alreadyEvaluatedKeys)
         var value = object[key];
-        if (object[key] !== undefined){
-            return object[key];
+        if (value !== undefined){
+            console.log("returning", value)
+            return value;
         }
 
-        if (key.indexOf(".") !== 0) {
+        var isNestedProperty = key.indexOf(".") !== 0;
+        if (isNestedProperty) {
             var path = key.split(".");
             var firstKey = path.shift();
+
+            if (alreadyEvaluatedKeys === undefined) {
+                alreadyEvaluatedKeys = [];
+            }
+            alreadyEvaluatedKeys = alreadyEvaluatedKeys.concat([firstKey])
+
             var newObject = object[firstKey];
-            if (typeof newObject === "undefined"){
-                throw "Property '" + key  + "' is undefined"
+            if (newObject === undefined){
+                var firstPartOfErrorMessage = "Property '" + alreadyEvaluatedKeys.join(".") + "' is undefined"
+                var secondPartOfErrorMessage = "";
+                if (path.join(".") !== alreadyEvaluatedKeys.join(".")){
+                    secondPartOfErrorMessage = " (fetching '" + exceptLast(alreadyEvaluatedKeys).join(".") + "." + key + "')";
+                }
+                showError(firstPartOfErrorMessage + secondPartOfErrorMessage);
             } else {
-                return getValue(newObject, path.join("."));
+                return getValue(newObject, path.join("."), alreadyEvaluatedKeys);
             }
         } else {
-            throw "Property '" + key + "' is undefined.";
+            showError("Property '" + key + "' is undefined.");
         }
     }
 }
 
+function exceptLast(array){
+    var ret = array.slice();
+    ret.pop();
+    return ret;
+}
+
 module.exports = oFetch;
+

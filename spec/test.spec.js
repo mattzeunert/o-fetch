@@ -15,9 +15,7 @@ describe("oFetch basics", function(){
 
     it("Throws an exception if the requested property doesn't exist", function(){
         var exampleObject = {};
-        expect(function(){
-            oFetch(exampleObject, "test");
-        }).toThrow("Property 'test' is undefined");
+        expect(() => oFetch(exampleObject, "test")).toThrow("Property 'test' is undefined");
     });
 });
 
@@ -32,4 +30,14 @@ describe("oFetch nested access support", function(){
         }
         expect(oFetch(deepObject, "parent.child.grandchild")).toBe("cookie");
     });
+
+    it("Throws an exception when a deeply nested value is undefined", function(){
+        var object = {
+            test: {}
+        };
+        expect(oFetch(object, "test")).toEqual({});
+        expect(() => oFetch(object, "test.a")).toThrow("Property 'test.a' is undefined");
+        expect(() => oFetch(object, "test.a.b")).toThrow("Property 'test.a' is undefined (fetching 'test.a.b')");
+    });
 })
+
