@@ -1,5 +1,5 @@
 var expect = require("expect")
-var oFetch = require("../fetch.js")
+var oFetch = require("../o-fetch.js")
 
 describe("oFetch basics", function(){
     it("Can fetch one or more direct child properties from an object", function(){

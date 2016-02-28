@@ -1,8 +1,8 @@
 {
   "name": "o-fetch",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "description": "Add optinal type-safety to your function calls.",
-  "main": "fetch.js",
+  "main": "o-fetch.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
