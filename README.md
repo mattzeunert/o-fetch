@@ -12,9 +12,13 @@ Install oFetch using NPM: `npm install o-fetch --save`
 
     var oFetch = require("o-fetch");
 
-    // using ES2015 destructuring syntax
+    // Fetch multiple keys (using ES2015 destructuring syntax)
     var [firstName, lastName] = oFetch(person, "firstName", "lastName");
 
     // Fetch a nested value
     var countryCode = oFetch(person, "address.country.countryCode"); 
+
+## Contributing
+
+Install jasmine-node (`npm install -g jasmine-node`), then run `jasmine-node spec/`.
 
