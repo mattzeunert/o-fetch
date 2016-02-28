@@ -21,12 +21,12 @@ function oFetch(object){
             var firstKey = path.shift();
             var newObject = object[firstKey];
             if (typeof newObject === "undefined"){
-                throw "Property " + key  + " is undefined"
+                throw "Property '" + key  + "' is undefined"
             } else {
                 return getValue(newObject, path.join("."));
             }
         } else {
-            throw "Property " + key + " is undefined.";
+            throw "Property '" + key + "' is undefined.";
         }
     }
 }

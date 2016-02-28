@@ -17,7 +17,7 @@ describe("oFetch basics", function(){
         var exampleObject = {};
         expect(function(){
             oFetch(exampleObject, "test");
-        }).toThrow("Property test is undefined");
+        }).toThrow("Property 'test' is undefined");
     });
 });
 
