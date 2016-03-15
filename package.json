@@ -1,6 +1,6 @@
 {
   "name": "o-fetch",
-  "version": "0.2.1",
+  "version": "0.2.2",
   "description": "Add optinal type-safety to your function calls.",
   "main": "o-fetch.js",
   "scripts": {

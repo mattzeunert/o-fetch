@@ -11,15 +11,13 @@ function oFetch(object){
     }
 
     function showError(message){
-        // console.log("ERR: " + message)
-        throw message;
+        console.error("Error fetching from this object:", object);
+        throw new Error(message);
     }
 
     function getValue(object, key, alreadyEvaluatedKeys){
-        // console.log("getValue", object, key, "aek", alreadyEvaluatedKeys)
         var value = object[key];
         if (value !== undefined){
-            // console.log("returning", value)
             return value;
         }
 
