@@ -4,6 +4,8 @@ Add type-safety to your function calls, but only when you feel like it.
 
 `oFetch(person, "firstName")` is the same as `person.firstName`, except that it will throw an exception if `person.firstName` is undefined.
 
+(I don't think I'll be adding support for checking specific types, but you can try using [Joi](https://github.com/hapijs/joi).)
+
 ## Installation:
 
 Install oFetch using NPM: `npm install o-fetch --save`
